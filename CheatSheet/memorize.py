@@ -84,3 +84,6 @@ for i in range (3):
 
 print(result)
 bangbangbang
+
+nums=list
+for i in range(len(nums)-1, -1, -1): #start,stop,decrement
