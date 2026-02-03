@@ -1,4 +1,4 @@
-# I'm sorry, Mom. I just purchased NeetCode.
+# I'm sorry, Mom. I just purchased NeetCode :)
 
 ![9 to 5 Leetcode Every Night](nevergiveup.png)
 

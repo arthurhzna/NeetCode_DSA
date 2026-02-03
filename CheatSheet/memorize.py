@@ -87,3 +87,6 @@ bangbangbang
 
 nums=list
 for i in range(len(nums)-1, -1, -1): #start,stop,decrement
+
+mp = defaultdict(int)
+if key not exists, the value will be 0 int
