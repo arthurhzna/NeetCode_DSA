@@ -3,9 +3,9 @@ class Solution:
         left = 0
         right = len(s)-1
         while left < right:
-            while left < right and not self.is_alphanumeric(s[left]):
+            while left < right and not self.isAlphanumeric(s[left]):
                 left += 1 
-            while right > left and not self.is_alphanumeric(s[right]):
+            while right > left and not self.isAlphanumeric(s[right]):
                 right -= 1 
             if s[left].lower() != s[right].lower():
                 return False
