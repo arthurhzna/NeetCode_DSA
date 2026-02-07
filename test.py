@@ -51,34 +51,47 @@ from typing import List
 #         return (ord('A') <= ord(c) <= ord('Z'))or (ord('a') <= ord(c) <= ord('z')) or (ord('0') <= ord(c) <= ord('9'))
 
 
+# class Solution:
+#     def threeSum(self, nums: List[int]) -> List[List[int]]:
+#         nums.sort()
+#         result = []
+#         for i, a in enumerate (nums):
+#             if a > 0:
+#                 break
+#             if a == nums[i-1] and i > 0:
+#                 continue
+#             l, r = i +1, len(nums)-1
+#             while l < r :
+#                 threesum = a + nums[l] + nums[r]
+#                 if threesum < 0:
+#                     l += 1
+#                 elif threesum > 0:
+#                     r -= 1 
+#                 else:
+#                     result.append([a, nums[l], nums[r]])
+#                     #cause == 0, if we continue just l increment without r decrement, we will get the same result again
+#                     l += 1
+#                     r -= 1
+#                     #check current value l not same previous value, if same, continue
+#                     while nums[l] == nums[l-1] and l < r:
+#                         l += 1
+#                     #check current value r not same previous value, if same, continue
+#                     while nums[r] == nums[r+1] and l < r:
+#                         r -= 1
+#         return result
+
 class Solution:
-    def threeSum(self, nums: List[int]) -> List[List[int]]:
-        nums.sort()
-        result = []
-        for i, a in enumerate (nums):
-            if a > 0:
-                break
-            if a == nums[i-1] and i > 0:
-                continue
-            l, r = i +1, len(nums)-1
-            while l < r :
-                threesum = a + nums[l] + nums[r]
-                if threesum < 0:
-                    l += 1
-                elif threesum > 0:
-                    r -= 1 
-                else:
-                    result.append([a, nums[l], nums[r]])
-                    #cause == 0, if we continue just l increment without r decrement, we will get the same result again
-                    l += 1
-                    r -= 1
-                    #check current value l not same previous value, if same, continue
-                    while nums[l] == nums[l-1] and l < r:
-                        l += 1
-                    #check current value r not same previous value, if same, continue
-                    while nums[r] == nums[r+1] and l < r:
-                        r -= 1
-        return result
+    def maxArea(self, height: List[int]) -> int:
+        l, r = 0 , len(height)-1
+        max_area = 0
+        while l < r:
+            area = (r - l) * min(height[l], height[r])
+            max_area = max(max_area, area)
+            if height[r] > height[l]:
+                l += 1 
+            elif height[r] <= height[l]:
+                r -= 1 
+        return max_area
 
 test = Solution()
-print(test.threeSum([0,0,0]))
+print(test.maxArea([1,2]))
