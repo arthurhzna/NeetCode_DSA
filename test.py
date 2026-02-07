@@ -53,11 +53,32 @@ from typing import List
 
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        #sort + check double variable x, x + y + z , then x and y using two pointers
-        
-
-
-        
+        nums.sort()
+        result = []
+        for i, a in enumerate (nums):
+            if a > 0:
+                break
+            if a == nums[i-1] and i > 0:
+                continue
+            l, r = i +1, len(nums)-1
+            while l < r :
+                threesum = a + nums[l] + nums[r]
+                if threesum < 0:
+                    l += 1
+                elif threesum > 0:
+                    r -= 1 
+                else:
+                    result.append([a, nums[l], nums[r]])
+                    #cause == 0, if we continue just l increment without r decrement, we will get the same result again
+                    l += 1
+                    r -= 1
+                    #check current value l not same previous value, if same, continue
+                    while nums[l] == nums[l-1] and l < r:
+                        l += 1
+                    #check current value r not same previous value, if same, continue
+                    while nums[r] == nums[r+1] and l < r:
+                        r -= 1
+        return result
 
 test = Solution()
-print(test.threeSum([-1,0,1,2,-1,-4]))
+print(test.threeSum([0,0,0]))
