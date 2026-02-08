@@ -80,18 +80,67 @@ from typing import List
 #                         r -= 1
 #         return result
 
+# class Solution:
+#     def maxArea(self, height: List[int]) -> int:
+#         l, r = 0 , len(height)-1
+#         max_area = 0
+#         while l < r:
+#             area = (r - l) * min(height[l], height[r])
+#             max_area = max(max_area, area)
+#             if height[r] > height[l]:
+#                 l += 1 
+#             elif height[r] <= height[l]:
+#                 r -= 1 
+#         return max_area
+
+# class Solution:
+#     def lengthOfLongestSubstring(self, s: str) -> int:
+#         result = set()
+#         l = 0
+#         longest = 0
+#         for r in range(len(s)):
+#             while s[r] in result:
+#                 result.remove(s[l])
+#                 l+=1
+#             result.add(s[r])
+#             print(result)
+#             print(f"r--{r} l--{l}")
+#             longest = max(longest, (r-l)+1) #+1 because index start with index 0
+#             r += 1
+#         return longest 
+
+
 class Solution:
-    def maxArea(self, height: List[int]) -> int:
-        l, r = 0 , len(height)-1
-        max_area = 0
-        while l < r:
-            area = (r - l) * min(height[l], height[r])
-            max_area = max(max_area, area)
-            if height[r] > height[l]:
-                l += 1 
-            elif height[r] <= height[l]:
-                r -= 1 
-        return max_area
+    def characterReplacement(self, s: str, k: int) -> int:
+        l, r = 0, 1
+        result = 1
+        for l in range (len(s)):
+            print("------")
+            if r >= (len(s)-k):
+                break
+            print(r)
+            counter_change = 0
+            counter_longst = 1
+            while r < (len(s)):
+                if s[l] != s[r] and k != 0:
+                    counter_change += 1
+                    r += 1
+                    counter_longst += 1
+                    print(f"not same{counter_longst} INDEX {r}")
+                    continue
+                else:
+                    r += 1
+                    counter_longst += 1
+                    print(f"same{counter_longst} INDEX {r}")
+                    
+                if k != 0 and counter_change == k:
+                    break
+
+            
+            result = max(result, counter_longst)
+
+        return result
 
 test = Solution()
-print(test.maxArea([1,2]))
+print(test.characterReplacement(("AAAB"), 0))
+
