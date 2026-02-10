@@ -34,3 +34,33 @@ def getMatchingProducts(products, queries):
         result.append(matches)
 
     return result
+
+def getMaxLength(s):
+    left = 0
+    seen = set()
+    max_len = 0
+
+    for right in range(len(s)):
+        while s[right] in seen:
+            seen.remove(s[left])
+            left += 1
+        
+        seen.add(s[right])
+        max_len = max(max_len, right - left + 1)
+
+    return max_len
+
+def smallestString(substrings):
+    n = len(substrings)
+
+    for i in range(1, n):
+        key = substrings[i]
+        j = i - 1
+
+        while j >= 0 and key + substrings[j] < substrings[j] + key: #When the value at the current index is greater than the value before it, it compares with the previous index and replaces it if the key is greater.
+            substrings[j + 1] = substrings[j]
+            j -= 1
+
+        substrings[j + 1] = key
+
+    return ''.join(substrings)

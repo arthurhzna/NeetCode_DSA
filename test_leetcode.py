@@ -92,7 +92,7 @@ from typing import List
 #             elif height[r] <= height[l]:
 #                 r -= 1 
 #         return max_area
-
+   
 # class Solution:
 #     def lengthOfLongestSubstring(self, s: str) -> int:
 #         result = set()
@@ -111,25 +111,25 @@ from typing import List
 
 
 
-class Solution:
-    def characterReplacement(self, s: str, k: int) -> int:
-        countf = {}
-        maxf = 0 
-        res = 0 
-        l = 0 
-        for r in range (len(s)):
-            countf[s[r]] =  1 + countf.get(s[r],0)
-            maxf = max(maxf, countf[s[r]])
+# class Solution:
+#     def characterReplacement(self, s: str, k: int) -> int:
+#         countf = {}
+#         maxf = 0 
+#         res = 0 
+#         l = 0 
+#         for r in range (len(s)):
+#             countf[s[r]] =  1 + countf.get(s[r],0)
+#             maxf = max(maxf, countf[s[r]])
 
-            while ( r - l + 1 ) - maxf > k:
-                countf[s[l]] -= 1
-                l += 1
+#             while ( r - l + 1 ) - maxf > k:
+#                 countf[s[l]] -= 1
+#                 l += 1
             
-            res = max(res, r - l + 1)
+#             res = max(res, r - l + 1)
         
-        return res
+#         return res
 
 
-test = Solution()
-print(test.characterReplacement(("AAAB"), 0))
+# test = Solution()
+# print(test.characterReplacement(("AAAB"), 0))
 
