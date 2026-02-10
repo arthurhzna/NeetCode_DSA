@@ -110,36 +110,25 @@ from typing import List
 #         return longest 
 
 
+
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
-        l, r = 0, 1
-        result = 1
-        for l in range (len(s)):
-            print("------")
-            if r >= (len(s)-k):
-                break
-            print(r)
-            counter_change = 0
-            counter_longst = 1
-            while r < (len(s)):
-                if s[l] != s[r] and k != 0:
-                    counter_change += 1
-                    r += 1
-                    counter_longst += 1
-                    print(f"not same{counter_longst} INDEX {r}")
-                    continue
-                else:
-                    r += 1
-                    counter_longst += 1
-                    print(f"same{counter_longst} INDEX {r}")
-                    
-                if k != 0 and counter_change == k:
-                    break
+        countf = {}
+        maxf = 0 
+        res = 0 
+        l = 0 
+        for r in range (len(s)):
+            countf[s[r]] =  1 + countf.get(s[r],0)
+            maxf = max(maxf, countf[s[r]])
 
+            while ( r - l + 1 ) - maxf > k:
+                countf[s[l]] -= 1
+                l += 1
             
-            result = max(result, counter_longst)
+            res = max(res, r - l + 1)
+        
+        return res
 
-        return result
 
 test = Solution()
 print(test.characterReplacement(("AAAB"), 0))
