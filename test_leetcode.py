@@ -133,41 +133,49 @@ from typing import List
 # test = Solution()
 # print(test.characterReplacement(("AAAB"), 0))
 
-
-
-
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
-        result = s
-        min_substring = ""
-        countMin = 0 
-        l = 0 
-        # window = r - l
+
+        if t == "":
+            return ""
+        
+
+        window, countT = {}, {}
+        resIndex, resLen = [-1, -1], float("infinity")
+
+
+        for n in t :
+            countT[n] = 1 + countT.get(n, 0)
+        
+
+        have, need = 0, len(countT)
+        l = 0
+
         for r in range (len(s)):
-            # print(r)
-            if s[r] in t: 
-                flag_count = True
-                temp_min = s[l:r+1]
-                for i in t:
-                   
-                    if i not in temp_min:
-                        flag_count = False
-                        break
-                    print(f"i {i},  r {r} flag {flag_count}, temp_min {temp_min} ")
-            else:
-                continue
-            if flag_count:
-                if len(temp_min) < len(result):
-                    result = temp_min
-                min_substring = temp_min
-                print (f"flag {min_substring} flag {r}")
-                counter = 0 
-                while s[r] in min_substring > 1:
-                    min_substring = min_substring[counter+1:]
-                    l += 1
-                    print (f"remove l {l} {min_substring}")
-        print(result)
-        return result
+            c = s[r]
+
+            window[c] = 1 + window.get(c, 0)
+
+            if c in countT and window[c] == countT[c]:
+               
+                have += 1
+                print(f"jumlah window {window} and have {have}")
+
+            while have == need:
+                
+                if (r-l+1) < resLen:
+                    resIndex = [l,r]
+                    resLen = r-l+1
+                
+                window[s[l]] -= 1
+
+                if s[l] in countT and window[s[l]] < countT[s[l]]:
+                    have -= 1
+                l += 1
+                print(f"window {window}, r {r} l {l}")
+            print(f"---------------- {window}")
+        l,r = resIndex
+        return s[l:r+1]
 
 test = Solution()
 print(test.minWindow(("ADOBECODEBANC"), "ABC"))
