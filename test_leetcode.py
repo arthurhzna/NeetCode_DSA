@@ -133,52 +133,72 @@ from typing import List
 # test = Solution()
 # print(test.characterReplacement(("AAAB"), 0))
 
-class Solution:
-    def minWindow(self, s: str, t: str) -> str:
+# class Solution:
+#     def minWindow(self, s: str, t: str) -> str:
 
-        if t == "":
-            return ""
+#         if t == "":
+#             return ""
         
 
-        window, countT = {}, {}
-        resIndex, resLen = [-1, -1], float("infinity")
+#         window, countT = {}, {}
+#         resIndex, resLen = [-1, -1], float("infinity")
 
 
-        for n in t :
-            countT[n] = 1 + countT.get(n, 0)
+#         for n in t :
+#             countT[n] = 1 + countT.get(n, 0)
         
 
-        have, need = 0, len(countT)
-        l = 0
+#         have, need = 0, len(countT)
+#         l = 0
 
-        for r in range (len(s)):
-            c = s[r]
+#         for r in range (len(s)):
+#             c = s[r]
 
-            window[c] = 1 + window.get(c, 0)
+#             window[c] = 1 + window.get(c, 0)
 
-            if c in countT and window[c] == countT[c]:
+#             if c in countT and window[c] == countT[c]:
                
-                have += 1
-                print(f"jumlah window {window} and have {have}")
+#                 have += 1
+#                 print(f"jumlah window {window} and have {have}")
 
-            while have == need:
+#             while have == need:
                 
-                if (r-l+1) < resLen:
-                    resIndex = [l,r]
-                    resLen = r-l+1
+#                 if (r-l+1) < resLen:
+#                     resIndex = [l,r]
+#                     resLen = r-l+1
                 
-                window[s[l]] -= 1
+#                 window[s[l]] -= 1
 
-                if s[l] in countT and window[s[l]] < countT[s[l]]:
-                    have -= 1
-                l += 1
-                print(f"window {window}, r {r} l {l}")
-            print(f"---------------- {window}")
-        l,r = resIndex
-        return s[l:r+1]
+#                 if s[l] in countT and window[s[l]] < countT[s[l]]:
+#                     have -= 1
+#                 l += 1
+#                 print(f"window {window}, r {r} l {l}")
+#             print(f"---------------- {window}")
+#         l,r = resIndex
+#         return s[l:r+1]
+
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        temp = {}
+        for c in s :
+            if ord(c) == 123 or ord(c) == 125:
+                temp["{"] = 1 + temp.get("{",0) 
+                print("{")
+            elif ord(c) == 40 or ord(c) == 41:
+                temp["("] = 1 + temp.get("(",0) 
+                print("(")
+            elif ord(c) == 91 or ord(c) == 93:
+                temp["["] = 1 + temp.get("[",0) 
+                print("[")
+        print(f"temp{temp}")
+        if temp.get("{",0)  %2 == 0 and  temp.get("[",0)  %2 == 0 and  temp.get("[",0) %2  == 0:
+            return True
+        return False
+
 
 test = Solution()
-print(test.minWindow(("ADOBECODEBANC"), "ABC"))
+print(test.isValid(("()[]{}")))
 
 # s = "sasda"
 # print(s[2:])
