@@ -10,6 +10,8 @@ nums = []
 for i in range(len(nums)):
 for i in range(i + 1, len(nums)):
 for i in nums:
+    
+for i in range(1, len(freq)):
 
 count = [10, 20, 30]
 
