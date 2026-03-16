@@ -10,8 +10,6 @@ Example:
 Another example:
 "app" < "apple"
 
-# Programming Terms
-
 ## Distinct Array
 A **distinct array** is an array where all elements are unique, meaning no duplicate values exist.
 
