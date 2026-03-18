@@ -128,3 +128,10 @@ substrings = ["a", "ba"]
 
 ''.join(substrings)
 
+[[False] * n for _ in range(n)]
+[
+  [T, F, F, F],
+  [T, F, F, F],
+  [T, F, F, F],
+  [T, F, F, F]
+]
