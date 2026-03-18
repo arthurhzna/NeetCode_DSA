@@ -135,3 +135,18 @@ substrings = ["a", "ba"]
   [T, F, F, F],
   [T, F, F, F]
 ]
+
+dp = [[False] * n] * n
+
+use same address
+dp[0] ─┐
+dp[1] ─┼──> [False, False, False, False]
+dp[2] ─┤
+dp[3] ─┘
+dp[0][0] = True
+[
+  [T, F, F, F],
+  [T, F, F, F],
+  [T, F, F, F],
+  [T, F, F, F]
+]
