@@ -43,3 +43,6 @@ Example:
 
 Explanation:
 "ana" reversed is still "ana".
+
+
+subarray (kontigu) dengan hasil perkalian terbesar
