@@ -46,3 +46,11 @@ Explanation:
 
 
 subarray (kontigu) dengan hasil perkalian terbesar
+
+A subsequence is an array that can be derived from another array by deleting some or no elements without changing the order of the remaining elements.
+
+[1, 2, 3, 4]   ✅ (tidak hapus apa-apa)
+[1, 3, 4]      ✅ (hapus 2)
+[2, 4]         ✅ (hapus 1 dan 3)
+[3]            ✅
+[]             ✅ (kosong juga boleh)
