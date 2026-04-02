@@ -150,3 +150,11 @@ dp[0][0] = True
   [T, F, F, F],
   [T, F, F, F]
 ]
+
+s = "abcd"
+
+print(s[::-1])   # dcba
+print(s[-1])     # d
+print(s[-1:])    # d
+print(s[:2])     # ab
+print(s[2:])     # cd
